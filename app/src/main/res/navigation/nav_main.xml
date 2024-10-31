@@ -4,10 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
     app:startDestination="@id/mapFragment2">
-
     <fragment
         android:id="@+id/mapFragment2"
         android:name="ru.lostgirl.mymapapp.ui.map.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map">
+        <action
+            android:id="@+id/action_mapFragment2_to_markerListFragment"
+            app:destination="@id/markerListFragment" />
+        <argument
+            android:name="marker"
+            android:defaultValue="@null"
+            app:argType="ru.lostgirl.mymapapp.model.Marker"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/markerListFragment"
+        android:name="ru.lostgirl.mymapapp.ui.markerlist.MarkerListFragment"
+        android:label="fragment_marker_list"
+        tools:layout="@layout/fragment_marker_list">
+        <action
+            android:id="@+id/action_markerListFragment_to_mapFragment2"
+            app:destination="@id/mapFragment2"
+            app:popUpTo="@id/mapFragment2"
+            app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>

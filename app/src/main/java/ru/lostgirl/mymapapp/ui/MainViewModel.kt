@@ -23,15 +23,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         get() = _state
 
     init {
-       // inittext()
         loadMarks()
     }
 
-    private fun inittext() {
-        save("test 1", 0, Point(59.936046, 30.326869))
-        save("test 2", 0, Point(59.938185, 30.32808))
-        save("test 3", 0, Point(59.937376, 30.33621))
-    }
     private fun loadMarks() = viewModelScope.launch {
         val marks = repository.getAll()
         _state.value = MainUIState(marks)
@@ -39,10 +33,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun removeById(id: Int) = viewModelScope.launch {
         repository.delete(id)
+        loadMarks()
     }
 
-    fun save(description: String, id: Int = 0, point: Point) = viewModelScope.launch {
-        val marker = Marker(id, point, description)
+    fun save(description: String, point: Point, id: Int = 0) = viewModelScope.launch {
+        val marker = Marker(id, longitude = point.longitude, latitude = point.latitude, description)
         repository.save(marker)
+        loadMarks()
     }
 }

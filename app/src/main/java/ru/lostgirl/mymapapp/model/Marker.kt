@@ -1,10 +1,12 @@
 package ru.lostgirl.mymapapp.model
 
-import com.yandex.mapkit.geometry.Point
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-
+@Parcelize
 data class Marker(
     val id: Int,
-    val point: Point,
+    val longitude: Double,
+    val latitude: Double,
     val description: String,
-)
+) : Parcelable

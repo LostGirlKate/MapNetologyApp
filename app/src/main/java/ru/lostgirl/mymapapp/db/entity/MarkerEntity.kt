@@ -2,7 +2,6 @@ package ru.lostgirl.mymapapp.db.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.yandex.mapkit.geometry.Point
 import ru.lostgirl.mymapapp.model.Marker
 
 @Entity
@@ -15,7 +14,8 @@ data class MarkerEntity(
 ) {
     fun toDto() = Marker(
         id = id,
-        point = Point(latitude, longitude),
+        latitude = latitude,
+        longitude = longitude,
         description = description
     )
 
@@ -24,9 +24,8 @@ data class MarkerEntity(
             MarkerEntity(
                 id = dto.id,
                 description = dto.description,
-                latitude = dto.point.latitude,
-                longitude = dto.point.longitude
+                latitude = dto.latitude,
+                longitude = dto.longitude
             )
-
     }
 }

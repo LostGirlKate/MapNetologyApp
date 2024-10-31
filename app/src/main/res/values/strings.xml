@@ -2,4 +2,13 @@
     <string name="app_name">MyMapApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit">edit</string>
+    <string name="delete">delete</string>
+    <string name="close">close</string>
+    <string name="coords">Координаты: %s %s</string>
+    <string name="add_marker">Добавить новый маркер</string>
+    <string name="edit_marker">Редактирование маркера</string>
+    <string name="marker_list_title">Список добавленных маркеров</string>
+    <string name="all_marks">Все метки</string>
+    <string name="type_description">Введите название</string>
 </resources>
